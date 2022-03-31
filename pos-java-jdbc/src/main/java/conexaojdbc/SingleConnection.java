@@ -28,7 +28,7 @@ public class SingleConnection {
 			/*Conexão é aberto e fechado uma  vez só*/
 			/*Sessões são abertas e fechadas várias vezes*/
 			if(connection == null) {
-				Class.forName("org.postgresql.Driver");
+				Class.forName("org.postgresql.Driver");//Carrega o driver do banco em questão
 				connection = DriverManager.getConnection(url, user, password);
 				connection.setAutoCommit(false);/*para não salvar automaticamente - para decidir*/
 				

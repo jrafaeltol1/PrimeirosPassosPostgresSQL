@@ -63,4 +63,49 @@ public class UserPosDAO {
 		
 		return list;
 	}
-}
+	
+	public UserPosjava buscarUmObjeto(Long id) throws Exception {
+
+		UserPosjava userposjava = new UserPosjava();
+
+		String sql = "select * from userposjava where id ="+id;
+
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultado = statement.executeQuery();
+		
+		while (resultado.next()) {
+			userposjava.setId(resultado.getLong("id"));
+			userposjava.setNome(resultado.getString("nome"));
+			userposjava.setEmail(resultado.getString("email"));
+		}
+			
+					
+		return userposjava;
+	}
+	
+	public void atualizar (UserPosjava userposjava) throws SQLException  {
+		
+		try {
+		
+			String sql = "update userposjava set nome = ?  where id= "+userposjava.getId();
+		
+			PreparedStatement statement  = connection.prepareStatement(sql);
+		
+			statement.setString(1,userposjava.getNome());
+			
+			statement.execute();
+			connection.commit();
+		
+		}catch(Exception e) {
+			
+			connection.rollback();
+			
+			e.printStackTrace();
+		}
+		}
+		
+	}
+	
+	
+
+
