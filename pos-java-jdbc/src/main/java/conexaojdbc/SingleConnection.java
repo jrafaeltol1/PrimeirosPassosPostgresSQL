@@ -19,7 +19,7 @@ public class SingleConnection {
 	
 	/*Construtor chama o método conectar quando invocado*/
 	public SingleConnection() {
-		conectar();
+		conectar(); //teste
 	}
 	
 	
